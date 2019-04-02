@@ -1,0 +1,207 @@
+#mainContent .paper-card {
+    border-radius: 5px;
+    display: inline-block;
+    -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 50;
+    margin-top: -150px;
+}
+.ant-card-head-title {
+    text-align: left;
+    font-size:1.5em
+}
+.flex {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.ml10 {
+    margin-left: 10px;
+}
+.space-between {
+    justify-content: space-between;
+}
+.writen {
+    position: relative;
+    padding: 16px 20px;
+    border-left: 5px solid #0f9d58;
+    color: #6e6e6e;
+    background: #f5f5f5;
+    font-size: 16px;
+    border-radius: 0 2px 2px 0;
+    text-align: left;
+}
+.article div h3 {
+    color: #6e6e6e;
+}
+p.paragraph {
+    text-indent: 2em;
+    text-align: left;
+    font-size: 16px;
+}
+:host ::ng-deep nz-anchor {
+    display: block;
+    width: 250px;   
+}
+.steps {
+    margin-top: 20px;
+}
+.steps p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.paper-card img {
+    max-width: 96%;
+    cursor: zoom-in;
+    cursor: -webkit-zoom-in;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+figure {
+    position: relative;
+    text-align: center;
+}
+.figure-box {
+    text-align: center;
+}
+.figure-box.showImg {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.figure-box.showImg .img-shadow{
+    position: fixed;
+    /* width: 100%; */
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 666;
+    background: #2f2d2d;;
+}
+.figure-box.showImg img {
+    /* max-width: 100%; */
+    cursor: zoom-out;
+    cursor: -webkit-zoom-out;
+    margin: auto; 
+    z-index: 667;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+.steps-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: left;
+}
+.steps-second-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+}
+.codes {
+    font-family: "Consolas" , "Courier New" , Courier, mono, serif;
+    font-size: 16px;
+    background-color: #272822;
+    text-align: left;
+    padding: 10px 10px 10px 40px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.codes ol {
+    list-style: decimal;
+}
+.codes ol li {
+    color: #fff;
+    border-left: 3px solid #0f9d58;
+    padding: 0 10px;
+}
+:host ::ng-deep nz-step {
+    width: 33% !important;
+    margin: 0 auto !important;
+}
+:host ::ng-deep nz-step .ant-steps-tail {
+    display: none;
+}
+.steps-content {
+    margin-top: 20px;
+}
+p.paragraph .ant-btn.ant-btn-lg {
+    cursor: none;
+}
+@media screen and (max-width: 1024px) {
+    .paper-card {
+        width: calc(100% - 50px);
+    }
+}
+@media screen and (max-width: 760px) {
+    .paper-card .tags {
+        display: none;
+    }
+    .paper-card {
+        margin-top: 20px;
+    }
+    #fade-header {
+        display: block;
+    }
+    p#paper-title {
+        display: none;
+    }
+    .steps-title {
+        font-size: 20px;
+    }
+    .steps-second-title {
+        font-size: 18px;
+    }
+    .article div#writen-before, p.paragraph, .codes{
+        font-size: 14px;
+    }
+    p.paragraph .ant-btn.ant-btn-lg {
+        padding: 0 15px;
+        font-size: 12px;
+        height: 28px;
+        border-radius: 4px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .steps-title {
+        font-size: 18px;
+    }
+    .steps-second-title {
+        font-size: 16px;
+    }
+    .article div#writen-before, p.paragraph{
+        font-size: 12px;
+    }
+    .codes {
+        font-size: 6px;
+    }
+    .ant-card-head-title {
+        font-size:1em
+    }
+    p.paragraph .ant-btn.ant-btn-lg {
+        padding: 0 !important;
+        font-size: 8px !important;
+        border-radius: 4px !important;
+        height: 20px !important;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .paper-card {
+        width: calc(100% - 50px);
+    }
+}
+@media screen and (min-width: 1024px) {
+    .paper-card {
+        width: 900px;
+    }
+}
