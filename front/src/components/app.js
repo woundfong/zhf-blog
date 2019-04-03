@@ -17,6 +17,7 @@ import './home/home.css'
 export default class App extends PComponent {
     constructor() {
         super();
+        this.isCollapsed = false;
     }
     componentWillMount() {
         window.EventEmitter = EventEmitter;
@@ -29,26 +30,48 @@ export default class App extends PComponent {
             EventEmitter.emit('toggleSideBar', true);
         }
     }
-    toggleSideBar = () => {
+    isMobileClient() {
+        return window.innerWidth <= 500
+    }
+    toggleSideBar = (config) => {
+        config = config || {};
+        this.isCollapsed = config.isCollapsed !== undefined ? config.isCollapsed : !this.isCollapsed;
+        if(this.isMobileClient()) {
+            const fullScreenContainer = this.refs.fullScreenContainer;
+            if(this.isCollapsed) {
+                fullScreenContainer.style.display = 'none';
+            } else {
+                fullScreenContainer.style.display = 'flex';
+                fullScreenContainer.style.opacity = '0.2';
+            }
+        } else {
+            this.toggleMainContentPadding();
+        }
+    }
+    toggleMainContentPadding() {
         const mainContent = this.refs.mainContent;
-        const classNames = mainContent.getAttribute('class');
         let newClassName = '';
-        if(classNames.indexOf('trans-padding-left') < 0) {
+        if(!this.isCollapsed) {
             newClassName = 'trans-padding-left';
         }
         mainContent.setAttribute('class', newClassName);
     }
     showFullScreenImg = (src) => {
-        const imgFullScreenContainer = this.refs.imgFullScreenContainer;
-        imgFullScreenContainer.innerHTML = '';
+        const fullScreenContainer = this.refs.fullScreenContainer;
+        fullScreenContainer.innerHTML = '';
         const imgNode = document.createElement('img');
         imgNode.setAttribute('src', src);
-        imgFullScreenContainer.appendChild(imgNode);
-        imgFullScreenContainer.style.display = 'flex';
+        fullScreenContainer.appendChild(imgNode);
+        fullScreenContainer.style.display = 'flex';
+        fullScreenContainer.style.opacity = '1';
     }
-    onClickImgFullScreenContainer() {
-        const imgFullScreenContainer = this.refs.imgFullScreenContainer;
-        imgFullScreenContainer.style.display = 'none';
+    onClickFullScreenContainer() {
+        if(this.isMobileClient()) {
+            EventEmitter.emit('toggleSideBar', {isCollapsed: true});
+        }  else {
+            const fullScreenContainer = this.refs.fullScreenContainer;
+            fullScreenContainer.style.display = 'none';
+        }
     }
     render() {
         return (
@@ -63,7 +86,7 @@ export default class App extends PComponent {
                             <Route path="/papers" component={Papers}/>
                         </Switch>
                     </main>
-                    <div id="imgFullScreenContainer" ref="imgFullScreenContainer" onClick={() => this.onClickImgFullScreenContainer()}></div>
+                    <div id="fullScreenContainer" ref="fullScreenContainer" onClick={() => this.onClickFullScreenContainer()}></div>
                 </Layout>
                 <HomeFooter />
             </div>

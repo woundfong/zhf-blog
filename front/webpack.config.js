@@ -53,7 +53,7 @@ module.exports = {
     // devtool: 'source-map',
     devServer: {
         port: "3000",
-        // publicPath: '/dist/',
+        // publicPath: '/dist',
         // contentBase: './', //本地服务器所加载的页面所在的目录
         historyApiFallback: true, //依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html
         inline: true, //实时刷新

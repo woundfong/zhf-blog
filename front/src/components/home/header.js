@@ -52,7 +52,7 @@ export default class HomeHeader extends PComponent {
                     className={this.state.isCollapsed?'home-header':'home-header trans-padding-left'}
                     // style={{display: this.state.showTopHeader?'none':'block'}}
                 >
-                    <span>
+                    <span style={{paddingLeft: '10px'}}>
                         {this.state.webHeaderInfoTitle}
                     </span>
                 </header>

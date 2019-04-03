@@ -1,6 +1,7 @@
 import React from 'react'
 import Paper from './paper'
 import {Card, Tag, Icon, Button, Steps} from 'antd'
+import routers from '../../config/router.config'
 const Step = Steps.Step;
 export default class SetupWebsiteByNg extends Paper {
     constructor() {
@@ -12,9 +13,10 @@ export default class SetupWebsiteByNg extends Paper {
         }
     }
     render() {
-        const tags = ['阿里云', 'angular2', 'express', 'nginx', '性能优化'].map((tag) => {
+        const tags = routers.papers[0].tags.map((tag) => {
             return <Tag>{tag}</Tag>
         });
+        const paperTitle = routers.papers[0].title;
         const securityGroupSteps = [
             {title: '安全组列表', content: '../src/images/securityGroupsList.png', isImg: true},
             {title: '配置规则', content: '../src/images/rulesConfig.png', isImg: true},
@@ -101,7 +103,7 @@ export default class SetupWebsiteByNg extends Paper {
             )}
         ]
         return (
-            <Card className="paper-card" title="阿里云服务器布置angular2网站">
+            <Card className="paper-card" title={paperTitle}>
                 <div className="flex space-between" style={{marginBottom: '10px'}}>
                     <div className="tags-container flex">
                         <Icon type="tags" />

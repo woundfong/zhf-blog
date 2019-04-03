@@ -1,38 +1,34 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import MediaQuery from 'react-responsive'
-import {Card} from 'antd'
-const {Meta} = Card;
+import routers from '../../config/router.config'
+import { List, Tag, Icon } from 'antd';
 export default class MainContent extends React.Component {
     componentDidMount() {
         EventEmitter.emit('showPaper', null);
     }
     render() {
-        const contens = [
-            {
-                title: '阿里云服务器布置angular2网站',
-                src: './src/images/ng2.jpg',
-                to: 'setup-website-by-ng2'
-            }
-        ].map((content) => {
-            return (
-                <Link to={'/papers/' + content.to}>
-                    <Card 
-                        className="home-card"
-                        hoverable
-                        cover={<img alt="angular" src={content.src} />}
-                    >
-                        <Meta 
-                            title={content.title}
-                        />
-                    </Card>
-                </Link>
-            )
-        })
+        const papers = routers.papers;
         return (
-            <div>
-                {contens}
-            </div>
+            <List 
+                itemLayout="vertical"
+                dataSource={papers}
+                bordered
+                size="large"
+                renderItem={paper => {
+                    const tags = paper.tags.map((tag) => (
+                        <Tag>{tag}</Tag>
+                    ))
+                    return <List.Item>
+                            <div className="flex space-between" style={{padding: '0 10px'}}>
+                                <Link to={paper.path}>{paper.title}</Link>
+                                <div className="flex">
+                                    <Icon type="tags" />
+                                    {tags}
+                                </div>
+                            </div>
+                    </List.Item>
+                }}
+            />
         )
     }
 }
