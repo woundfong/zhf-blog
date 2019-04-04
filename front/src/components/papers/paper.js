@@ -1,7 +1,27 @@
 import React from 'react'
-import {Steps} from 'antd'
+import routers from '../../config/router.config'
+import {Steps, Tag, Icon} from 'antd'
 const Step = Steps.Step;
 export default class Paper extends React.Component {
+    getPaperInfo(key) {
+        let papers = routers.papers;
+        for(let i = 0; i < papers.length; i++) {
+            if(papers[i].key === key) {
+                return papers[i]
+            }
+        }
+    }
+    getTags(tags) {
+        const tagsElem = tags.map((tag) => {
+            return <Tag>{tag}</Tag>
+        });
+        return (
+            <div className="tags-container flex">
+                <Icon type="tags"/>
+                {tagsElem}
+            </div>
+        )
+    }
     getSteps(steps, key) {
         const stepArr = steps.map((step, index) => (
             <Step key={index} title={step.title} onClick={() => {

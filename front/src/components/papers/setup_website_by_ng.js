@@ -1,7 +1,6 @@
 import React from 'react'
 import Paper from './paper'
-import {Card, Tag, Icon, Button, Steps} from 'antd'
-import routers from '../../config/router.config'
+import {Card, Icon, Button, Steps} from 'antd'
 const Step = Steps.Step;
 export default class SetupWebsiteByNg extends Paper {
     constructor() {
@@ -13,10 +12,9 @@ export default class SetupWebsiteByNg extends Paper {
         }
     }
     render() {
-        const tags = routers.papers[0].tags.map((tag) => {
-            return <Tag>{tag}</Tag>
-        });
-        const paperTitle = routers.papers[0].title;
+        const paperInfo = this.getPaperInfo('angular2');
+        const tags = this.getTags(paperInfo.tags);
+        const paperTitle = paperInfo.title;
         const securityGroupSteps = [
             {title: '安全组列表', content: '../src/images/securityGroupsList.png', isImg: true},
             {title: '配置规则', content: '../src/images/rulesConfig.png', isImg: true},
@@ -105,10 +103,11 @@ export default class SetupWebsiteByNg extends Paper {
         return (
             <Card className="paper-card" title={paperTitle}>
                 <div className="flex space-between" style={{marginBottom: '10px'}}>
-                    <div className="tags-container flex">
+                    {tags}
+                    {/* <div className="tags-container flex">
                         <Icon type="tags" />
                         {tags}
-                    </div>
+                    </div> */}
                     <div className="flex">
                         <div>
                             <Icon type="user" />
@@ -227,8 +226,8 @@ export default class SetupWebsiteByNg extends Paper {
                         <ol start="1">
                             <li> {"var http = require('http');"}</li>
                             <li> {"http.createServer((request, response)=>{"} </li>
-                            <li> {"response.writeHead(200, {Content-Type': 'text/plain'});"}</li>
-                            <li> {"response.end('Hello World\n');"} </li>
+                            <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;response.writeHead(200, {Content-Type': 'text/plain'});"}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;response.end('Hello World\\n');"}}></li>
                             <li> {"}).listen(3000);"}</li>
                             <li> {"console.log('Server running at port 3000');"}</li>
                         </ol>
@@ -314,7 +313,7 @@ export default class SetupWebsiteByNg extends Paper {
                         <div className="codes">
                         <ol start="1">
                             <li> {'location /helloworld {'}</li>
-                            <li> {'  proxy_pass http://127.0.0.1:3000;'} </li>
+                            <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;proxy_pass http://127.0.0.1:3000;"}}></li>
                             <li> {'}'}</li>
                         </ol>
                         </div>
@@ -348,10 +347,10 @@ export default class SetupWebsiteByNg extends Paper {
                         <div className="codes">
                         <ol start="1">
                             <li> {"server {"}</li>
-                            <li> {"  listen 80;"} </li>
-                            <li> {"  location / {"} </li>
-                            <li> {"    proxy_pass http://127.0.0.1:3000;"} </li>
-                            <li> {"  }"}</li>
+                            <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;listen 80;"}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;location / {"}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass http://127.0.0.1:3000;"}}></li>
+                            <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;}"}}></li>
                             <li> {"}"} </li>
                         </ol>
                         </div>
@@ -524,7 +523,7 @@ export default class SetupWebsiteByNg extends Paper {
                         <div className="codes">
                         <ol start="1">
                             <li> {"app.get('*', (req, res)=>{"} </li>
-                            <li> {"  res.sendFile(path.join(__dirname, 'front/dist/index.html'));"}</li>
+                            <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;res.sendFile(path.join(__dirname, 'front/dist/index.html'));"}}></li>
                             <li> {"});"} </li>
                         </ol>
                         </div>

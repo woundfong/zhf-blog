@@ -5,7 +5,7 @@ import PComponent from '../pComponent'
 import SubMenu from 'antd/lib/menu/SubMenu';
 import routers from '../../config/router.config'
 const IconFont = Icon.createFromIconfontCN({
-    scriptUrl: '//at.alicdn.com/t/font_1102675_14gqkloiwfz.js',
+    scriptUrl: '//at.alicdn.com/t/font_1102675_gmk545zu2vb.js',
 });
 export default class SideBar extends PComponent {
     toggle() {

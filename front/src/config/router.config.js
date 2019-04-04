@@ -15,6 +15,14 @@ const routers = {
             key: 'react+wepack4',
             url: './react_with_webpack4',
             tags: ['react', 'webpack4', 'express']
+        },
+        {
+            path: '/papers/ace-intro',
+            title: 'ace.js 一个好用的编辑器插件',
+            icon: 'icon-the_editor',
+            key: 'ace',
+            url: './editor_ace',
+            tags: ['ace.js', '前端编辑器']
         }
     ]
 }

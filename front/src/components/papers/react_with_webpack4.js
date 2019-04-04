@@ -1,21 +1,20 @@
 import React from 'react'
 import Paper from './paper'
 import {Link} from 'react-router-dom'
-import routers from '../../config/router.config'
-import {Card, Tag, Icon} from 'antd'
+import {Card, Icon} from 'antd'
 export default class ReactWithWebpack4 extends Paper {
     render() {
-        const tags = routers.papers[1].tags.map((tag) => {
-            return <Tag>{tag}</Tag>
-        });
-        const paperTitle = routers.papers[0].title;
+        const paperInfo = this.getPaperInfo('react+wepack4');
+        const tags = this.getTags(paperInfo.tags);
+        const paperTitle = paperInfo.title;
         return (
             <Card className="paper-card" title={paperTitle}>
                 <div className="flex space-between" style={{marginBottom: '10px'}}>
-                    <div className="tags-container flex">
+                    {tags}
+                    {/* <div className="tags-container flex">
                         <Icon type="tags" />
                         {tags}
-                    </div>
+                    </div> */}
                     <div className="flex">
                         <div>
                             <Icon type="user" />
@@ -46,11 +45,11 @@ export default class ReactWithWebpack4 extends Paper {
                             <ol start="1">
                                 <li> {"import Loadable from 'react-loadable';"}  </li>
                                 <li> {"function Loading() {"} </li>
-                                <li> {"  return <div>Loading...</div>;"} </li>
+                                <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;return <div>Loading...</div>;"}}></li>
                                 <li> {"}"} </li>
                                 <li> {'const LoadableBar = Loadable({'} </li>
-                                <li> {"  loader: () => import('./components/Bar')"} </li>
-                                <li> {"  loading: Loading"} </li>
+                                <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;loader: () => import('./components/Bar')"}}></li>
+                                <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;loading: Loading"}}></li>
                                 <li> {"})"} </li>
                             </ol>
                         </div>
@@ -62,11 +61,11 @@ export default class ReactWithWebpack4 extends Paper {
                             <ol start="1">
                                 <li> {"test: /(\.js|\.jsx)$/,"}  </li>
                                 <li> {"use: {"} </li>
-                                <li> {'  loader: "babel-loader",'} </li>
-                                <li> {"  options: {"} </li>
-                                <li> {'    presets: ["@babel/preset-env", "@babel/preset-react"],'} </li>
-                                <li> {'    plugins: ["@babel/plugin-proposal-class-properties", "@babel/plugin-syntax-dynamic-import"]'} </li>
-                                <li> {"  }"} </li>
+                                <li dangerouslySetInnerHTML={{__html: '&nbsp;&nbsp;loader: "babel-loader",'}}></li>
+                                <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;options: {"}}></li>
+                                <li dangerouslySetInnerHTML={{__html: '&nbsp;&nbsp;&nbsp;&nbsp;presets: ["@babel/preset-env", "@babel/preset-react"],'}}></li>
+                                <li dangerouslySetInnerHTML={{__html: '&nbsp;&nbsp;&nbsp;&nbsp;plugins: ["@babel/plugin-proposal-class-properties", "@babel/plugin-syntax-dynamic-import"]'}}></li>
+                                <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;}"}}></li>
                                 <li> {"}"} </li>
                             </ol>
                         </div>
@@ -88,9 +87,9 @@ export default class ReactWithWebpack4 extends Paper {
                         <div className="codes">
                             <ol start="1">
                                 <li> {"output: {"}  </li>
-                                <li> {"  path: path.resolve(__dirname, 'dist'),"}  </li>
-                                <li> {"  filename: '[name].js',"}  </li>
-                                <li> {"  publicPath: '/dist/'"}  </li>
+                                <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;path: path.resolve(__dirname, 'dist'),"}}></li>
+                                <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;filename: '[name].js',"}}></li>
+                                <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;publicPath: '/dist/'"}}></li>
                                 <li> {"}"}  </li>
                             </ol>
                         </div>
@@ -115,10 +114,10 @@ export default class ReactWithWebpack4 extends Paper {
                                 <li> {" "} </li>
                                 <li> {"/* angular2"} </li>
                                 <li> {"app.get('*', (req, res)=>{"} </li>
-                                <li> {"  res.sendFile(path.join(__dirname, 'front/dist/index.html'));"} </li>
+                                <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;res.sendFile(path.join(__dirname, 'front/dist/index.html'));"}}></li>
                                 <li> {"}) */"} </li>
                                 <li> {"app.get('*', (req, res)=>{"} </li>
-                                <li> {"  res.sendFile(path.join(__dirname, 'front/index.html'));"} </li>
+                                <li dangerouslySetInnerHTML={{__html: "&nbsp;&nbsp;res.sendFile(path.join(__dirname, 'front/index.html'));"}}></li>
                                 <li> {"})"} </li>
                             </ol>
                         </div>
